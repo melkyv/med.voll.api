@@ -21,15 +21,35 @@ public class Patient {
     private String email;
     private String phone;
     private String cpf;
+    private Boolean active;
 
     @Embedded
     private Adress adress;
 
     public Patient(DataStorePatient patient) {
+        this.active = true;
         this.name = patient.name();
         this.email = patient.email();
         this.phone = patient.phone();
         this.cpf = patient.cpf();
         this.adress = new Adress(patient.adress());
+    }
+
+    public void update(DataUpdatePatient data) {
+        if (data.name() != null) {
+            this.name = data.name();
+        }
+
+        if (data.phone() != null) {
+            this.phone = data.phone();
+        }
+
+        if (data.adress() != null) {
+            this.adress.updateData(data.adress());
+        }
+    }
+
+    public void delete() {
+        this.active = false;
     }
 }
