@@ -36,4 +36,18 @@ public class Medic {
         this.specialty = data.specialty();
         this.adress = new Adress(data.adress());
     }
+
+    public void updateData(DataUpdateMedic data) {
+        if (data.name() != null) {
+            this.name = data.name();
+        }
+
+        if (data.phone() != null) {
+            this.phone = data.phone();
+        }
+
+        if (data.adress() != null) {
+            this.adress.updateData(data.adress());
+        }
+    }
 }

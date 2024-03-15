@@ -1,8 +1,8 @@
 package med.voll.api.medic;
 
-public record MedicDataList(String name, String email, String crm, Specialty specialty) {
+public record MedicDataList(Long id, String name, String email, String crm, Specialty specialty) {
 
     public MedicDataList(Medic medic) {
-        this(medic.getName(), medic.getEmail(), medic.getCrm(), medic.getSpecialty());
+        this(medic.getId(), medic.getName(), medic.getEmail(), medic.getCrm(), medic.getSpecialty());
     }
 }
