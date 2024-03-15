@@ -21,6 +21,7 @@ public class Medic {
     private String email;
     private String phone;
     private String crm;
+    private Boolean active;
 
     @Enumerated(EnumType.STRING)
     private Specialty specialty;
@@ -29,6 +30,7 @@ public class Medic {
     private Adress adress;
 
     public Medic(DataStoreMedic data) {
+        this.active = true;
         this.name = data.name();
         this.email = data.email();
         this.crm = data.crm();
@@ -49,5 +51,9 @@ public class Medic {
         if (data.adress() != null) {
             this.adress.updateData(data.adress());
         }
+    }
+
+    public void delete() {
+        this.active = false;
     }
 }
