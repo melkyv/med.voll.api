@@ -20,7 +20,7 @@ public class PatientController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity store(@RequestBody @Valid DataStorePatient data, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity save(@RequestBody @Valid DataStorePatient data, UriComponentsBuilder uriBuilder) {
         var patient = new Patient(data);
         repository.save(patient);
 

@@ -20,7 +20,7 @@ public class MedicController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity store(@RequestBody @Valid DataStoreMedic data, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity save(@RequestBody @Valid DataStoreMedic data, UriComponentsBuilder uriBuilder) {
         var medic = new Medic(data);
         repository.save(medic);
 
