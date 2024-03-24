@@ -22,4 +22,10 @@ public interface MedicRepository extends JpaRepository<Medic, Long> {
             limit 1
             """)
     Medic chooseRandomMedicAvailableInDate(Specialty specialty, LocalDateTime date);
+
+    @Query("""
+            select m.active from Medic m
+            where m.id = :idMedic
+            """)
+    Boolean findActiveById(Long idMedic);
 }
