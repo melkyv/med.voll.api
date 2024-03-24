@@ -14,8 +14,6 @@ public class ConsultationController {
     @Autowired
     private ConsultationService consultationService;
 
-    private ConsultationRepository repository;
-
     @PostMapping
     @Transactional
     public ResponseEntity save(@RequestBody @Valid DataSchedulingConsultation data) {
