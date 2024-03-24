@@ -25,7 +25,7 @@ public class ConsultationService {
     @Autowired
     private List<ValidatorSchedulingConsultation> validators;
 
-    public void schedule(DataSchedulingConsultation data) {
+    public DataDetailsConsultation schedule(DataSchedulingConsultation data) {
         if (!patientRepository.existsById(data.idPatient())) {
             throw new ValidExcpetion("Patient id not exists!");
         }
@@ -38,9 +38,15 @@ public class ConsultationService {
 
         var medic = chooseMedic(data);
         var patient = patientRepository.getReferenceById(data.idPatient());
-        var consultation = new Consultation(null, medic, patient, data.date(), null);
 
+        if (medic == null) {
+            throw new ValidExcpetion("There is no doctor available in this data");
+        }
+
+        var consultation = new Consultation(null, medic, patient, data.date(), null);
         consultationRepository.save(consultation);
+
+        return new DataDetailsConsultation(consultation);
     }
 
     private Medic chooseMedic(DataSchedulingConsultation data) {

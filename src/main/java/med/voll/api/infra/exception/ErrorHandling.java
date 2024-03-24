@@ -1,6 +1,7 @@
 package med.voll.api.infra.exception;
 
 import jakarta.persistence.EntityNotFoundException;
+import med.voll.api.domain.ValidExcpetion;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -50,6 +51,11 @@ public class ErrorHandling {
     @ExceptionHandler(Exception.class)
     public ResponseEntity error500(Exception e) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + e.getLocalizedMessage());
+    }
+
+    @ExceptionHandler(ValidExcpetion.class)
+    public ResponseEntity errorRulesBusiness(ValidExcpetion e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
     }
 
     public record ValidationErrorData(String field, String message) {
