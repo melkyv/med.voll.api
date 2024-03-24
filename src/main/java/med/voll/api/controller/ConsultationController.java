@@ -1,23 +1,34 @@
 package med.voll.api.controller;
 
 import jakarta.validation.Valid;
-import med.voll.api.domain.consultation.DataDetailsConsultation;
-import med.voll.api.domain.consultation.DataSchedulingConsultation;
+import med.voll.api.domain.consultation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/consultations")
 public class ConsultationController {
 
+    @Autowired
+    private ConsultationService consultationService;
+
+    private ConsultationRepository repository;
+
     @PostMapping
     @Transactional
     public ResponseEntity save(@RequestBody @Valid DataSchedulingConsultation data) {
+        consultationService.schedule(data);
 
         return ResponseEntity.ok(new DataDetailsConsultation(null, null, null, null));
+    }
+
+    @DeleteMapping
+    @Transactional
+    public ResponseEntity cancel(@RequestBody @Valid DataCancelConsultation data) {
+        consultationService.cancel(data);
+
+        return ResponseEntity.noContent().build();
     }
 }

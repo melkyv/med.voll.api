@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     @Autowired
-    AuthenticationManager manager;
+    private AuthenticationManager manager;
 
     @Autowired
-    TokenService tokenService;
+    private TokenService tokenService;
 
     @PostMapping
     public ResponseEntity login(@RequestBody @Valid AuthData data) {
