@@ -18,15 +18,14 @@ public class SpringDocConfig {
                 .components(new Components()
                         .addSecuritySchemes("bearer-key",
                                 new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")))
-                        .info(new Info()
-                                .title("Voll.med API")
-                                .description("Rest API of the Voll.med application, containing CRUD functionalities for medics and patients, as well as scheduling and canceling consultations")
-                                .contact(new Contact()
-                                        .name("Backend Team - Melky V.")
-                                        .email("backend@voll.med"))
-                                .license(new License()
-                                        .name("Apache 2.0")
-                                        .url("http://voll.med/api/license-example"))
-                        );
+                .info(new Info()
+                        .title("Voll.med API")
+                        .description("Rest API of the Voll.med application, containing CRUD functionalities for medics and patients, as well as scheduling and canceling consultations")
+                        .contact(new Contact()
+                                .name("Backend Team - Melky V.")
+                                .email("backend@voll.med"))
+                        .license(new License()
+                                .name("Apache 2.0")
+                                .url("http://voll.med/api/license-example")));
     }
 }
