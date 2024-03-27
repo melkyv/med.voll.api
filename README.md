@@ -1,5 +1,5 @@
 # API Voll.med
-Voll.med API is a project idea addressed on the Alura platform, which provides functionalities based on the requirements of a medical clinic.
+Voll.med API is a Rest API project idea addressed on the Alura platform, which provides functionalities based on the requirements of a medical clinic.
 
 
 
