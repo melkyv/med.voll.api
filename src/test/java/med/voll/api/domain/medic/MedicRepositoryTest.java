@@ -76,9 +76,9 @@ class MedicRepositoryTest {
     }
 
     private Patient savePatient(String name, String email, String cpf) {
-        var paciente = new Patient(dataPatient(name, email, cpf));
-        em.persist(paciente);
-        return paciente;
+        var patient = new Patient(dataPatient(name, email, cpf));
+        em.persist(patient);
+        return patient;
     }
 
     private DataStoreMedic dataMedic(String name, String email, String crm, Specialty specialty) {
